@@ -1,32 +1,44 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-app-bar app flat
+      color="transparent"
+      class="px-sm-4"
+      :height="$route.name === 'Database' ? 80 : 48"
+    >
+      <v-app-bar-title v-if="$route.name === 'Database'">
+        <v-btn text plain link
+          to="/"
+          class="px-2"
+        >
+          <v-icon left>mdi-chevron-left</v-icon>
+          Back
+        </v-btn>
+      </v-app-bar-title>
+    </v-app-bar>
+    <v-main class="mx-4 mx-sm-8 main">
+      <router-view/>
+    </v-main>
+  </v-app>
 </template>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  height: 100vh;
+  max-height: 100vh;
+  // overflow-y: scroll;
+  // color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.main {
+  height: 100%;
+  max-height: 100%;
 }
 </style>
+
+<script>
+export default {
+
+}
+</script>
